@@ -1,21 +1,25 @@
-<%= form_for(task) do |f| %>
-  <% if task.errors.any? %>
-    <div class="alert alert-warnig">
-      <ul>
-        <% task.errors.full_messages.each do |task| %>
-          <li><%= task %></li>
-        <% end %>
-      </ul>
+<div class=col-xs-12 col-sm-8 col-lg-6 col-sm-offset-2 col-lg-offset-3>
+  <%= form_for(task) do |f| %>
+    <% if task.errors.any? %>
+      <div class="alert alert-warnig">
+        <ul>
+          <% task.errors.full_messages.each do |task| %>
+            <li><%= task %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form_group">
+      <%= f.label :status, 'ステータス' %>
+      <%= f.text_field :status, class: 'form-control' %>
     </div>
+
+    <div class="form_group">
+      <%= f.label :content, 'タスク'%>
+      <%= f.text_field :content, class: 'form-control' %>
+    </div>
+      
+    <%= f.submit '登録', class: 'btn btn-primary' %>
   <% end %>
-
-  <div class="form_group">
-  <%= f.label :status, 'ステータス' %>
-  <%= f.text_field :status, class: 'form_control' %>
-  </div>
-
-  <%= f.label :content, 'タスク'%>
-  <%= f.text_field :content, class: 'form_control' %>
-  
-  <%= f.submit '登録', class: 'btn btn-primary' %>
-<% end %>
+</div>
