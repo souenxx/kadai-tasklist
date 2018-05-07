@@ -1,0 +1,28 @@
+<h1>タスク一覧</h1>
+<% if @tasks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ステータス</th>
+        <th>タスク</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tasks.each do |task| %>
+        <tr>
+          <td><%= task.status %></td>
+          <td><%= task.content %></td>
+          <td>
+            <% if current_user == task.user %>
+              <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            <% end %>        
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate tasks %>
+  </div>
+<% end %>
